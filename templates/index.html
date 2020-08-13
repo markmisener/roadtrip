@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8' />
+  <title></title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"></script>
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css" type="text/css" />
+  <script src='https://npmcdn.com/csv2geojson@latest/csv2geojson.js'></script>
+  <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+  <link href='static/style.css' rel='stylesheet' />
+</head>
+
+<body>
+
+  <div id='map'></div>
+  <script>
+    var transformRequest = (url, resourceType) => {
+      var isMapboxRequest =
+        url.slice(8, 22) === "api.mapbox.com" ||
+        url.slice(10, 26) === "tiles.mapbox.com";
+      return {
+        url: isMapboxRequest ?
+          url.replace("?", "?pluginName=sheetMapper&") :
+          url
+      };
+    };
+
+    mapboxgl.accessToken = '{{ MAPBOX_ACCESS_TOKEN }}';
+
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [-94.22119806296678, 38.82337408526456],
+      zoom: 4,
+      transformRequest: transformRequest
+    });
+
+    $(document).ready(function() {
+      $.ajax({
+        type: "GET",
+        url: 'https://docs.google.com/spreadsheets/d/1FaIAgaFvNXOBtFMZ-ZP5bFKgSiXaULTRuJAVigBEhLU/gviz/tq?tqx=out:csv&sheet=data',
+        dataType: "text",
+        success: function(csvData) {
+          addMapData(csvData);
+        }
+      });
+
+      function addMapData(csvData) {
+        csv2geojson.csv2geojson(csvData, {
+          latfield: 'Latitude',
+          lonfield: 'Longitude',
+          delimiter: ','
+        }, function(err, pointData) {
+
+          var coordinatesArray = [];
+          pointData.features.forEach(element => coordinatesArray.push(element.geometry.coordinates));
+          var stringifiedCoordinatesArray = [];
+          coordinatesArray.forEach(point => stringifiedCoordinatesArray.push(point.join(',')));
+          var pointsString = stringifiedCoordinatesArray.join(';')
+
+          var baseUrl = 'https://api.mapbox.com/directions/v5/mapbox/driving'
+          var requestUrl = `${baseUrl}/${pointsString}.json?access_token=${mapboxgl.accessToken}&geometries=geojson&overview=full`
+
+          $.ajax({
+            method: 'GET',
+            url: requestUrl
+          }).done(function(data) {
+
+            map.on('load', function() {
+              map.addLayer({
+                'id': 'csvData',
+                'type': 'circle',
+                'source': {
+                  'type': 'geojson',
+                  'data': pointData
+                },
+                'paint': {
+                  'circle-radius': 5,
+                  'circle-color': "purple"
+                }
+              });
+
+              map.addLayer({
+                "id": "route",
+                "type": "line",
+                "source": {
+                  "type": "geojson",
+                  "data": {
+                    "type": "Feature",
+                    "properties": {},
+                    "geometry": data.routes[0].geometry
+                  }
+                },
+                "paint": {
+                  "line-color": "#03AA46",
+                  "line-width": 4,
+                  "line-opacity": 0.5
+                }
+              });
+            });
+
+            map.on('click', 'csvData', function(e) {
+              var coordinates = e.features[0].geometry.coordinates.slice();
+              var description = '<h3>' + e.features[0].properties.Name + '</h3>' +
+                '<h4>' + '<b>' + 'Lodging: ' + '</b>' + e.features[0].properties.Lodging + '</h4>';
+
+              // Ensure that if the map is zoomed out such that multiple
+              // copies of the feature are visible, the popup appears
+              // over the copy being pointed to.
+              while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+              }
+
+              //add Popup to map
+              new mapboxgl.Popup()
+                .setLngLat(coordinates)
+                .setHTML(description)
+                .addTo(map);
+
+            });
+
+            map.on('mouseenter', 'csvData', function() {
+              map.getCanvas().style.cursor = 'pointer';
+            });
+
+            map.on('mouseleave', 'places', function() {
+              map.getCanvas().style.cursor = '';
+            });
+
+            var bbox = turf.bbox(data);
+            map.fitBounds(bbox, {
+              padding: 50
+            });
+
+          });
+        });
+      };
+    });
+  </script>
+
+</body>
+
+</html>
