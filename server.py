@@ -1,4 +1,5 @@
 """Starts the Flask app."""
+import json
 import os
 
 from flask import Flask
@@ -14,7 +15,11 @@ MAPBOX_ACCESS_TOKEN = os.environ.get("MAPBOX_ACCESS_TOKEN", None)
 @app.route("/")
 def display():
     """Displays the homepage."""
-    return render_template("index.html", MAPBOX_ACCESS_TOKEN=MAPBOX_ACCESS_TOKEN)
+    return render_template(
+        "index.html",
+        MAPBOX_ACCESS_TOKEN=MAPBOX_ACCESS_TOKEN,
+        data=json.load(open("static/data/pointData.json")),
+    )
 
 
 if __name__ == "__main__":

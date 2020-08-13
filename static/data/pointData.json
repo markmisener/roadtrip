@@ -1,0 +1,18 @@
+{
+  "type":"FeatureCollection",
+  "features":[
+    {"type":"Feature","properties":{"Name":"Woodland,CA","Lodging":"-"},"geometry":{"type":"Point","coordinates":[-121.7733285,38.6786109]}},
+    {"type":"Feature","properties":{"Name":"Fernley,NV","Lodging":"RV Park"},"geometry":{"type":"Point","coordinates":[-119.1560727,39.5924235]}},
+    {"type":"Feature","properties":{"Name":"WestWendover,NV","Lodging":"RV Park"},"geometry":{"type":"Point","coordinates":[-114.0669567,40.735212]}},
+    {"type":"Feature","properties":{"Name":"GreenRiver,WY","Lodging":"RV Park"},"geometry":{"type":"Point","coordinates":[-109.5162809,41.5544686]}},
+    {"type":"Feature","properties":{"Name":"Cheyenne,WY","Lodging":"RV Park"},"geometry":{"type":"Point","coordinates":[-104.8222971,41.1015342]}},
+    {"type":"Feature","properties":{"Name":"Limon,CO","Lodging":"RV Park"},"geometry":{"type":"Point","coordinates":[-103.6750066,39.2661515]}},
+    {"type":"Feature","properties":{"Name":"Scandia,KS","Lodging":"AirBnB"},"geometry":{"type":"Point","coordinates":[-97.7859059,39.7932267]}},
+    {"type":"Feature","properties":{"Name":"Topeka,KS","Lodging":"RV Park"},"geometry":{"type":"Point","coordinates":[-95.7047023,38.9744684]}},
+    {"type":"Feature","properties":{"Name":"Stockton,MO","Lodging":"AirBnB"},"geometry":{"type":"Point","coordinates":[-93.8137537,37.6699475]}},
+    {"type":"Feature","properties":{"Name":"Warsaw,MO","Lodging":"AirBnB"},"geometry":{"type":"Point","coordinates":[-93.264146,38.17203]}},
+    {"type":"Feature","properties":{"Name":"Benton,IL","Lodging":"RV Park"},"geometry":{"type":"Point","coordinates":[-88.928847,38.0129178]}},
+    {"type":"Feature","properties":{"Name":"Nashville,TN","Lodging":"RV Park"},"geometry":{"type":"Point","coordinates":[-86.703611,36.2338313]}},
+    {"type":"Feature","properties":{"Name":"Rogersville,TN","Lodging":"AirBnB"},"geometry":{"type":"Point","coordinates":[-82.817248,36.437052]}}
+  ]
+}
