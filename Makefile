@@ -12,6 +12,10 @@ install: venv
 clean:
 	rm -r dev-env/
 
+pre-commit: install
+	source dev-env/bin/activate; \
+	pre-commit run --all-files
+
 run-local: install
 	source dev-env/bin/activate; \
 	sh start.sh
