@@ -21,25 +21,40 @@ function requestData(requestUrl) {
   });
 };
 
-
-function addPointDataToMap(map, data) {
-  /* add point geojson to map
+function addDataToMap(map, pointData, geometry) {
+  /* add point data and route geometry to the map
   */
-  map.on('load', function() {
-    map.addSource("points", {
-      'type': 'geojson',
-      'data': pointData
-    });
-
-    map.addLayer({
-      'id': 'pointData',
-      'type': 'circle',
-      'source': "points",
-      'paint': {
-        'circle-radius': 5,
-        'circle-color': "purple"
+  map.addLayer({
+    "id": "route",
+    "type": "line",
+    "source": {
+      "type": "geojson",
+      "data": {
+        "type": "Feature",
+        "properties": {},
+        "geometry": geometry
       }
-    });
+    },
+    "paint": {
+      "line-color": "#03AA46",
+      "line-width": 4,
+      "line-opacity": 0.5
+    }
+  });
+
+  map.addSource("points", {
+    'type': 'geojson',
+    'data': pointData
+  });
+
+  map.addLayer({
+    'id': 'pointData',
+    'type': 'circle',
+    'source': "points",
+    'paint': {
+      'circle-radius': 5,
+      'circle-color': "purple"
+    }
   });
 
   map.on('click', 'pointData', function(e) {
@@ -70,33 +85,8 @@ function addPointDataToMap(map, data) {
     map.getCanvas().style.cursor = '';
   });
 
-  var bbox = turf.bbox(data);
+  var bbox = turf.bbox(pointData);
   map.fitBounds(bbox, {
     padding: 50
-  });
-
-}
-
-function addRouteDataToMap(map, geometry) {
-  /* add route geojson to map
-  */
-  map.on('load', function() {
-    map.addLayer({
-      "id": "route",
-      "type": "line",
-      "source": {
-        "type": "geojson",
-        "data": {
-          "type": "Feature",
-          "properties": {},
-          "geometry": geometry
-        }
-      },
-      "paint": {
-        "line-color": "#03AA46",
-        "line-width": 4,
-        "line-opacity": 0.5
-      }
-    });
   });
 }

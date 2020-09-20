@@ -33,12 +33,12 @@
     });
 
     var pointData = {{ data | tojson | safe }};
-    addPointDataToMap(map, pointData);
-
     var pointsString = formatPointData(pointData);
     var requestUrl = `${baseUrl}/${pointsString}.json?access_token=${mapboxgl.accessToken}&geometries=geojson&overview=full`
     let loadRouteData = async () => requestData(requestUrl);
-    loadRouteData().then((data) => addRouteDataToMap(map, data.routes[0].geometry))
+    map.on('load', function() {
+      loadRouteData().then((data) => addDataToMap(map, pointData, data.routes[0].geometry))
+    });
 
   </script>
 
