@@ -20,8 +20,8 @@
     {"type":"Feature","properties":{"Name":"Crawfordsville, IN","Lodging":"Crawfordsville KOA"},"geometry":{"type":"Point","coordinates":[-86.9093023,40.0618659]}},
     {"type":"Feature","properties":{"Name":"Muscatine, IL","Lodging":"Airbnb"},"geometry":{"type":"Point","coordinates":[-91.0489804,41.4205316]}},
     {"type":"Feature","properties":{"Name":"Altoona, IA","Lodging":"Griffs Valley View RV Park"},"geometry":{"type":"Point","coordinates":[-93.5205441,41.6781828]}},
-    {"type":"Feature","properties":{"Name":"Omaha, NE","Lodging":"Airbnb"},"geometry":{"type":"Point","coordinates":[-96.2216767,41.2917736]}},
-    {"type":"Feature","properties":{"Name":"Henderson, NE","Lodging":"Prairie Oasis Campground & Cabins"},"geometry":{"type":"Point","coordinates":[-97.80922,40.82587]}},
+    {"type":"Feature","properties":{"Name":"Omaha, NE","Lodging":"Airbnb"},"geometry":{"type":"Point","coordinates":[-95.9674063,41.2604332]}},
+    {"type":"Feature","properties":{"Name":"Waco, NE","Lodging":"Double Nickel Campground"},"geometry":{"type":"Point","coordinates":[-97.4628396,40.8196724]}},
     {"type":"Feature","properties":{"Name":"Ogallala, NE","Lodging":"Ogallala KOA"},"geometry":{"type":"Point","coordinates":[-101.7108051,41.1130602]}},
     {"type":"Feature","properties":{"Name":"Denver, CO","Lodging":"Airbnb"},"geometry":{"type":"Point","coordinates":[-105.0243523,39.8142498]}}
   ]
