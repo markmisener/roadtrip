@@ -1,5 +1,4 @@
 
-
 function formatPointData(pointData) {
   /* format for API request, lng,lat;lng,lat...
   */
@@ -42,47 +41,19 @@ function addDataToMap(map, pointData, geometry) {
     }
   });
 
-  map.addSource("points", {
-    'type': 'geojson',
-    'data': pointData
-  });
+  pointData.features.forEach(function(marker, i) {
+    var el = document.createElement('div');
+    el.className = 'marker';
+    el.innerHTML = '<span><b>' + (i + 1) + '</b></span>'
 
-  map.addLayer({
-    'id': 'pointData',
-    'type': 'circle',
-    'source': "points",
-    'paint': {
-      'circle-radius': 5,
-      'circle-color': "purple"
-    }
-  });
-
-  map.on('click', 'pointData', function(e) {
-    var coordinates = e.features[0].geometry.coordinates.slice();
-    var description = '<h3>' + e.features[0].properties.Name + '</h3>' +
-      '<h4>' + '<b>' + 'Lodging: ' + '</b>' + e.features[0].properties.Lodging + '</h4>';
-
-    // Ensure that if the map is zoomed out such that multiple
-    // copies of the feature are visible, the popup appears
-    // over the copy being pointed to.
-    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-      coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-    }
-
-    //add Popup to map
-    new mapboxgl.Popup()
-      .setLngLat(coordinates)
-      .setHTML(description)
+    new mapboxgl.Marker(el)
+      .setLngLat(marker.geometry.coordinates)
+      .setPopup(new mapboxgl.Popup({
+          offset: 25
+        })
+        .setHTML('<h3>' + marker.properties.Name + '</h3>' +
+                 '<h4>' + marker.properties.Lodging + '</h4>'))
       .addTo(map);
-
-  });
-
-  map.on('mouseenter', 'pointData', function() {
-    map.getCanvas().style.cursor = 'pointer';
-  });
-
-  map.on('mouseleave', 'pointData', function() {
-    map.getCanvas().style.cursor = '';
   });
 
   var bbox = turf.bbox(pointData);
