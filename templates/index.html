@@ -1,47 +1,72 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset='utf-8' />
-  <title></title>
-  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
-  <script src="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.js"></script>
-  <link href="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.css" rel="stylesheet" />
-  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js"></script>
-  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css" type="text/css" />
-  <script src='https://npmcdn.com/csv2geojson@latest/csv2geojson.js'></script>
-  <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
-  <script src="static/js/mapping.js"></script>
-  <link href='static/style.css' rel='stylesheet' />
+<meta charset=utf-8 />
+<title>Caroline and Mark in the wild</title>
+<meta name='robots' content='noindex, nofollow'>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<link rel="shortcut icon" href="static/img/favicon.ico">
+<title>Slideshow gallery in a marker tooltip</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+<script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
+<script src="static/js/mapping.js"></script>
+<link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+<link href='static/style.css' rel='stylesheet'/>
 </head>
-
 <body>
 
-  <div id='map'></div>
-  <script>
+<div class='sidebar'>
+  <div class='heading'>
+    <h1>Our stops</h1>
+  </div>
+  <div id='listings' class='listings'></div>
+</div>
+<div id='map'></div>
 
-    var baseUrl = 'https://api.mapbox.com/directions/v5/mapbox/driving'
+<script>
 
-    mapboxgl.accessToken = '{{ MAPBOX_ACCESS_TOKEN }}';
+  L.mapbox.accessToken =  '{{ MAPBOX_ACCESS_TOKEN }}';
+  var map = L.mapbox.map('map')
+    .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
 
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-94.22119806296678, 38.82337408526456],
-      zoom: 4,
-    });
+  var pointData = {{ data | tojson | safe }};
+  pointData.features.forEach(function(point, i){
+    point.properties.id = i;
+    point.properties.popupContent = generatePopupContent(point);
+  });
 
-    var pointData = {{ data | tojson | safe }};
-    var pointsString = formatPointData(pointData);
-    var requestUrl = `${baseUrl}/${pointsString}.json?access_token=${mapboxgl.accessToken}&geometries=geojson&overview=full`
-    let loadRouteData = async () => requestData(requestUrl);
-    map.on('load', function() {
-      loadRouteData().then((data) => addDataToMap(map, pointData, data.routes[0].geometry))
-    });
+  let loadRouteData = async () => makeRoute(pointData.features);
+  loadRouteData()
 
-  </script>
+  L.geoJSON(pointData, {
+      onEachFeature: onEachFeature
+  }).addTo(map);
 
+  buildLocationList(pointData);
+
+  $('#map').on('click', '.popup .cycle a', function() {
+      var $slideshow = $('.slideshow'),
+          $newSlide;
+
+      if ($(this).hasClass('prev')) {
+          $newSlide = $slideshow.find('.active').prev();
+          if ($newSlide.index() < 0) {
+              $newSlide = $('.image').last();
+          }
+      } else {
+          $newSlide = $slideshow.find('.active').next();
+          if ($newSlide.index() < 0) {
+              $newSlide = $('.image').first();
+          }
+      }
+
+      $slideshow.find('.active').removeClass('active').hide();
+      $newSlide.addClass('active').show();
+      return false;
+  });
+  map.setView([39.74149, -102.44501], 4);
+
+</script>
 </body>
-
 </html>

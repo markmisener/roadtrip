@@ -1,28 +1,469 @@
 {
-  "type":"FeatureCollection",
-  "features":[
-    {"type":"Feature","properties":{"Name":"Woodland, CA","Lodging":"-"},"geometry":{"type":"Point","coordinates":[-121.7733285,38.6786109]}},
-    {"type":"Feature","properties":{"Name":"Fernley, NV","Lodging":"Desert Rose RV Park"},"geometry":{"type":"Point","coordinates":[-119.1560727,39.5924235]}},
-    {"type":"Feature","properties":{"Name":"West Wendover, NV","Lodging":"Wendover KOA"},"geometry":{"type":"Point","coordinates":[-114.0669567,40.735212]}},
-    {"type":"Feature","properties":{"Name":"Green River, WY","Lodging":"The Travel Camp"},"geometry":{"type":"Point","coordinates":[-109.5162809,41.5544686]}},
-    {"type":"Feature","properties":{"Name":"Cheyenne, WY","Lodging":"AB Camping"},"geometry":{"type":"Point","coordinates":[-104.8222971,41.1015342]}},
-    {"type":"Feature","properties":{"Name":"Limon, CO","Lodging":"Limon KOA"},"geometry":{"type":"Point","coordinates":[-103.6750066,39.2661515]}},
-    {"type":"Feature","properties":{"Name":"Scandia, KS","Lodging":"Airbnb"},"geometry":{"type":"Point","coordinates":[-97.7859059,39.7932267]}},
-    {"type":"Feature","properties":{"Name":"Topeka, KS","Lodging":"Topeka / Capital City KOA"},"geometry":{"type":"Point","coordinates":[-95.7047023,38.9744684]}},
-    {"type":"Feature","properties":{"Name":"Stockton, MO","Lodging":"Airbnb"},"geometry":{"type":"Point","coordinates":[-93.8137537,37.6699475]}},
-    {"type":"Feature","properties":{"Name":"Warsaw, MO","Lodging":"Airbnb"},"geometry":{"type":"Point","coordinates":[-93.264146,38.17203]}},
-    {"type":"Feature","properties":{"Name":"Benton, IL","Lodging":"Benton KOA"},"geometry":{"type":"Point","coordinates":[-88.928847,38.0129178]}},
-    {"type":"Feature","properties":{"Name":"Nashville, TN","Lodging":"Two Rivers Campground"},"geometry":{"type":"Point","coordinates":[-86.703611,36.2338313]}},
-    {"type":"Feature","properties":{"Name":"Baileyton, TN","Lodging":"Airbnb"},"geometry":{"type":"Point","coordinates":[-82.8231656,36.340273]}},
-    {"type":"Feature","properties":{"Name":"Rogersville, TN","Lodging":"Airbnb"},"geometry":{"type":"Point","coordinates":[-82.817248,36.437052]}},
-    {"type":"Feature","properties":{"Name":"Baileyton, TN","Lodging":"Airbnb"},"geometry":{"type":"Point","coordinates":[-82.8231656,36.340273]}},
-    {"type":"Feature","properties":{"Name":"Frankfurt, KY","Lodging":"Elkhorn Campground"},"geometry":{"type":"Point","coordinates":[-84.8031234,38.2102946]}},
-    {"type":"Feature","properties":{"Name":"Crawfordsville, IN","Lodging":"Crawfordsville KOA"},"geometry":{"type":"Point","coordinates":[-86.9093023,40.0618659]}},
-    {"type":"Feature","properties":{"Name":"Muscatine, IL","Lodging":"Airbnb"},"geometry":{"type":"Point","coordinates":[-91.0489804,41.4205316]}},
-    {"type":"Feature","properties":{"Name":"Altoona, IA","Lodging":"Griffs Valley View RV Park"},"geometry":{"type":"Point","coordinates":[-93.5205441,41.6781828]}},
-    {"type":"Feature","properties":{"Name":"Omaha, NE","Lodging":"Airbnb"},"geometry":{"type":"Point","coordinates":[-95.9674063,41.2604332]}},
-    {"type":"Feature","properties":{"Name":"Waco, NE","Lodging":"Double Nickel Campground"},"geometry":{"type":"Point","coordinates":[-97.4628396,40.8196724]}},
-    {"type":"Feature","properties":{"Name":"Ogallala, NE","Lodging":"Ogallala KOA"},"geometry":{"type":"Point","coordinates":[-101.7108051,41.1130602]}},
-    {"type":"Feature","properties":{"Name":"Denver, CO","Lodging":"Airbnb"},"geometry":{"type":"Point","coordinates":[-105.0243523,39.8142498]}}
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "We left Woodland after having a big bday lunch from Dos Coyotes for Popie. The drive to Fernley was only a few hours.",
+        "city": "woodland",
+        "name": "Woodland, CA",
+        "lodging": "-"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.7733285,
+          38.6786109
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "After an uneventful 3 hour drive, we arrived in Fernley just before sunset. We took Lola for a walk around the park and got settled into the first night in our new home.",
+        "city": "fernley",
+        "name": "Fernley, NV",
+        "lodging": "Desert Rose RV Park"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.1560727,
+          39.5924235
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "It took around 5 hours to get across Nevada to reach West Wendover at the Nevada/Utah border. On the drive, we tried to make a quick stop at the Thunder Mountain Monument, but missed the exit. On our way out of West Wendover, we stopped by Bonneville Speedway to watch cars race on the salt flats.",
+        "city": "west_wendover",
+        "name": "West Wendover, NV",
+        "lodging": "Wendover KOA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.0669567,
+          40.735212
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Caroline got behind the wheel for the first time for a long day of driving. We got a chance to see Temple Square in Salt Lake City when we stopped for lunch. As we watched the sun set from the trailer in Green River, WY, we got a glipse of why they refer to the area as the Flaming Gorge.",
+        "city": "green_river",
+        "name": "Green River, WY",
+        "lodging": "The Travel Camp"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.5162809,
+          41.5544686
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "We had a late check-in in Cheyenne, so we took the opportunity to sleep in before starting the drive from Green River to Cheyenne. Once we arrived, we ate a BBQ dinner from the campground and went straight to bed.",
+        "city": "cheyenne",
+        "name": "Cheyenne, WY",
+        "lodging": "AB Camping"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8222971,
+          41.1015342
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "It was too hot in Limon to do anything, so we spent most of our time in the trailer with the AC blasting.",
+        "city": "limon",
+        "name": "Limon, CO",
+        "lodging": "Limon KOA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -103.6750066,
+          39.2661515
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "We finally reached our first multi-night destination, Scandia, KS! The town spans a couple of blocks in each direction and boasts a population of around 350. We took our three days to lounge around the house and plan stops later on in our trip. While we were here, we got a taste of the humidity of the South. We also got a chance to use a Smokin' Cajun grill, that shot out flames like Mad Max.",
+        "city": "scandia",
+        "name": "Scandia, KS",
+        "lodging": "Airbnb"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.7859059,
+          39.7932267
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "We spent some time checking out the historical sites of Topeka, KS, including the state capitol building and Monroe elementary school. Before bed, we sat out by the fishing pond and listened to the campground owner's band play in the distance.",
+        "city": "topeka",
+        "name": "Topeka, KS",
+        "lodging": "Topeka / Capital City KOA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.7047023,
+          38.9744684
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "The roads out to Stockton are very narrow, especially with a trailer, but Caroline kept us alive. We passed through Amish country before getting situated at the much smaller than advertised Airbnb, then headed to sleep. The next morning, Caroline started teaching online for the first time! After work, we took a drive through Stockton State Park to check out the lake. Pizza for dinner 😃and another early night.",
+        "city": "stockton",
+        "name": "Stockton, MO",
+        "lodging": "Airbnb"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.8137537,
+          37.6699475
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "We settled into a wonderful farmhouse for 19 nights in our first long term stay! The Airbnb was located on an active cattle ranch, so we were constantly serenaded by the neighbors. Lola loved running through the grass, even if it ended with her being covered in ticks. While we were in Warsaw, we hiked and even got a chance to go out on a pontoon boat and kayak on Truman Reservoir. Caroline won the \"first\", \"biggest\", AND \"most\" bets when we went fishing at Lake of the Ozarks. The bugs here are huge - EVERY. SINGLE. ONE.",
+        "city": "warsaw",
+        "name": "Warsaw, MO",
+        "lodging": "Airbnb"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.264146,
+          38.17203
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "On our way to Benton, we passed through St. Louis and caught a glimpse of the Gateway Arch! Benton was just a stopover for us, so we parked the trailer and watched one of the approximately 1000 dollar store DVDs we brought with us.",
+        "city": "benton",
+        "name": "Benton, IL",
+        "lodging": "Benton KOA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.928847,
+          38.0129178
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "When we drove through Nashville, we saw the Tennessee Supreme Court building, the Tennessee Titans stadium, and a replica of the Parthenon in Centennial Park. People on Broadway in Downtown Nashville were out in droves. We headed back to the RV park and listened to a live band from the trailer before heading to sleep.",
+        "city": "nashville",
+        "name": "Nashville, TN",
+        "lodging": "Two Rivers Campground"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.703611,
+          36.2338313
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Crossed into the Eastern Time Zone today, without even realizing it! We went to a restaurant called Aubrey's and, unfortunately, they did not sell T-shirts. The restaurant gave Caroline a gluten bun and we didn't notice until much too late.",
+        "city": "baileyton",
+        "name": "Baileyton, TN",
+        "lodging": "Airbnb"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.8231656,
+          36.340273
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "In Rogersville, we had the pleasure of staying at the quintessential cabin. There were horses, total isolation (but great WiFi for work), and a fishing pond. After managing to park the trailer on a wild slope, we spent the next 3 weeks enjoying the scenery and the insanely huge bugs. Caroline’s favorite part was checking out the wolf spiders that had glowing eyes like a cat at night. While we were in Rogersville we got to go to our first national park of the trip - the Great Smoky Mountains. Lola enjoyed it far more than we did, and we absolutely loved it.",
+        "city": "rogersville",
+        "name": "Rogersville, TN",
+        "lodging": "Airbnb"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.817248,
+          36.437052
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "We saw so many bourbon distilleries on the drive to and from Frankfort, but didn't get to stop by any! We ended up talking a walk around the campground and played some cards before calling it a night.",
+        "city": "frankfort",
+        "name": "Frankfort, KY",
+        "lodging": "Elkhorn Campground"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.8031234,
+          38.2102946
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "We stayed the night at the KOA in Crawfordsville, Indiana. We started having propane troubles in the trailer a few stops before, but it started to become an issue since it was so cold at night and the heater was out. We ended up having to buy a small space heater to keep warm!",
+        "city": "crawfordsville",
+        "name": "Crawfordsville, IN",
+        "lodging": "Crawfordsville KOA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.9093023,
+          40.0618659
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "When we first arrived, we were met with the overwhelming smell of yeast because of the local brewery and we were a bit worried it could ruin the trip. However, we had so much fun! We stayed in a beautiful penthouse apartment above multiple bars and restaurants. There was a huge, screened in outdoor patio where we could eat dinner and look out over the Mississippi River. We thoroughly enjoyed spending the week in a real city, surrounded by many restaurants.",
+        "city": "muscatine",
+        "name": "Muscatine, IL",
+        "lodging": "Airbnb"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.0489804,
+          41.4205316
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "For some reason, the short drive to Altoona felt like the longest drive we had yet! We arrived at Griffs Valley RV Park and BBQ'd our dinner. We had the time to even set up our Halloween decoration outside! We had a large pond near us and there were giant animal statues with incredible paint jobs - they were a riot.",
+        "city": "altoona",
+        "name": "Altoona, IA",
+        "lodging": "Griffs Valley View RV Park"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.5205441,
+          41.6781828
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "Another week of work in an Airbnb. We weren't totally thrilled with this place but, as always, we made the most of it. While this week was rather calm (boring), we found some really wonderful restaurants nearby!",
+        "city": "omaha",
+        "name": "Omaha, NE",
+        "lodging": "Airbnb"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9674063,
+          41.2604332
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "We were finally able to repair our propane issue which made us feel like true trailer pros. We spent the day walking around with the dog and enjoying the many fields of corn.",
+        "city": "waco",
+        "name": "Waco, NE",
+        "lodging": "Double Nickel Campground"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.4628396,
+          40.8196724
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "We were so glad that we were able to fix the propane problems because this was the first time we had to disconnect from the waterline because it dropped below freezing. Man was it cold! We relaxed in the trailer for the last time before we scooted off to Denver!",
+        "city": "ogallala",
+        "name": "Ogallala, NE",
+        "lodging": "Ogallala KOA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.7108051,
+          41.1130602
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "We were so relieved to arrive in a spot and know we would be staying for a while! The house is somewhat outside the main hustle n bustle of Denver proper. Within the first few days of arriving, the Suburban pooped out in a major way. We had to deal with getting the trailer to storage and fixing the car right away. Either way, we found time  and different ways to explore Denver and the areas around the Rocky Mountain National Park. Lola got to experience her first snow here! She thought it was pretty wild at first and then decided she wasn't a huge fan. She tried boycotting going to the bathroom but that obviously could only last too long. We were able to spend 3 whole months here and venture all around the surrounding cities. While we loved it here, we are ready to get out of the cold and start heading home!",
+        "city": "denver",
+        "name": "Denver, CO",
+        "lodging": "Airbnb"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0243523,
+          39.8142498
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "During our stay in Denver, we cashed in some credit card points to ball out at the Four Seasons Hotel in Vail, CO. This was our first \"real life\" experience since the pandemic started. We got to live it up for 2 nights at the fanciest hotel with a clawfoot bathtub and a fire place. We ate out for the first time in 9 months and celebrated our quick vacation from work and reality. This vacation was so much fun and relaxing!",
+        "city": "vail",
+        "name": "Vail, CO",
+        "lodging": "Four Seasons Vail"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.3793569,
+          39.6431929
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "asdf asdf asdf asdf asdf asdf asdf",
+        "city": "las_vegas",
+        "name": "Las Vegas, NM",
+        "lodging": "Hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.2100202,
+          35.6147941
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "asdf asdf asdf asdf asdf asdf asdf",
+        "city": "las_cruces",
+        "name": "Las Cruces, NM",
+        "lodging": "Hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.7896547,
+          32.2902629
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "asdf asdf asdf asdf asdf asdf asdf",
+        "city": "tucson",
+        "name": "Tucson, AZ",
+        "lodging": "Hotel"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.9827036,
+          32.2103202
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "asdf asdf asdf asdf asdf asdf asdf",
+        "city": "apache_junction",
+        "name": "Apache Junction, AZ",
+        "lodging": "RV Park"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.5326463,
+          33.401642
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "asdf asdf asdf asdf asdf asdf asdf",
+        "city": "desert_hot_springs",
+        "name": "Desert Hot Springs, CA",
+        "lodging": "RV Park"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.4366195,
+          33.9237132
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "description": "asdf asdf asdf asdf asdf asdf asdf",
+        "city": "chowchilla",
+        "name": "Chowchilla, CA",
+        "lodging": "RV Park"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.2313287,
+          37.1268559
+        ]
+      }
+    }
   ]
 }

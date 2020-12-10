@@ -3,3 +3,5 @@ dev-env
 *.pyc
 __pycache__
 .coverage
+.jekyll-cache
+_site
